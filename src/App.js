@@ -1,24 +1,30 @@
-import logo from './logo.svg';
+import 'semantic-ui-css/semantic.min.css'
+import React from 'react';
+// import logo from './logo.svg';
 import './App.css';
+import {Button, Progress} from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react'
+import { Segment, Input } from 'semantic-ui-react'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    <div>
+<h1>Hello World</h1>
+<Icon loading name='spinner' />
+<Icon loading name='certificate' /><Icon loading name='asterisk' />
+
+<Segment inverted>
+  <Input inverted placeholder='Search...' />
+</Segment>
+
+<Progress percent = {55} indicating />
+<Button primary> 분석 해보기 </Button>
+
+
+
     </div>
+
   );
 }
 
