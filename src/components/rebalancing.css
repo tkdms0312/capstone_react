@@ -1,0 +1,14 @@
+h2 {
+    padding-top: 40px; 
+    padding-left: 50px;
+    text-align: center; 
+}
+
+.durationButton {
+    display: inline-block;
+    text-align: center; 
+    margin: 0 auto;
+    padding-top: 100px; 
+    padding-left: 50px;
+
+}
