@@ -2,14 +2,14 @@ import React, { Route, useState, useEffect,Component } from 'react';
 import './login.css';
 import loginButton from './img/kakao_login.png'
 import axios from 'axios'
-import { Navigate, useNavigate, redirect, useHistory } from 'react-router-dom';
+import { Navigate, useNavigate, redirect } from 'react-router-dom';
 import Mypage from './components/mypage';
 
 
 
 function Login() {
   const [state, setState] = useState();
-  const history = useHistory();
+  const nav = useNavigate();
 
   const signIn = () =>{
     axios ({
@@ -18,17 +18,12 @@ function Login() {
     }).then(function (response) {
       console.log(response);
       if (response.data == 1){
-        <h1>정상</h1>
         setState(1); // state의 값을 1로 변경
-        history.push("/");
+        nav("mypage")
       }
     });
   
   }
-  useEffect(() => {
-    axios.get('http://13.125.140.171/login/kakao/test')
-    .then(response => <redirect to={'/mypage'} />)
-  }, [])
 
     return (
       <div class="Login">
