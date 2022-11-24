@@ -1,45 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React, { Route, useState, useEffect,Component } from 'react';
 import './login.css';
 import loginButton from './img/kakao_login.png'
 import axios from 'axios'
+import { Navigate, useNavigate, redirect, useHistory } from 'react-router-dom';
+import Mypage from './components/mypage';
+
 
 
 function Login() {
-  const [inputId, setInputId] = useState('')
-  const [inputPw, setInputPw] = useState('')
+  const [state, setState] = useState();
+  const history = useHistory();
 
-// input data 의 변화가 있을 때마다 value 값을 변경해서 useState 해준다
-  const handleInputId = (e) => {
-      setInputId(e.target.value)
+  const signIn = () =>{
+    axios ({
+      method: "GET",
+      url: 'http://13.125.140.171/login/kakao/test'
+    }).then(function (response) {
+      console.log(response);
+      if (response.data == 1){
+        <h1>정상</h1>
+        setState(1); // state의 값을 1로 변경
+        history.push("/");
+      }
+    });
+  
   }
-
-  const handleInputPw = (e) => {
-      setInputPw(e.target.value)
-  }
-
-// // login 버튼 클릭 이벤트
-//   const onClickLogin = () => {
-//       console.log('click login')
-//   }
-
-// 페이지 렌더링 후 가장 처음 호출되는 함수
   useEffect(() => {
-      axios.get('http://13.125.140.171/user')
-      .then(res => console.log(res))
-      .catch()
-  },
-  // 페이지 호출 후 처음 한번만 호출될 수 있도록 [] 추가
-  [])
+    axios.get('http://13.125.140.171/login/kakao/test')
+    .then(response => <redirect to={'/mypage'} />)
+  }, [])
 
-  return (
-    <div class="Login">
-        <aside> {/*오른쪽에 로그인버튼 부분 */}
-            <div className="LoginButton" >
-                <a href="http://13.125.140.171/login/kakao" id="custom-login-btn"><img src={loginButton} width="150"/></a>
-            </div>
-        </aside>
-    </div>
-  );
+    return (
+      <div class="Login">
+          <aside> {/*오른쪽에 로그인버튼 부분 */}
+              <div className="LoginButton" >
+                  {/* <a href="http://13.125.140.171/login/kakao" id="custom-login-btn" onClick={signIn}><img src={loginButton} width="150"/></a> */}
+                  <button id="custom-login-btn" onClick={signIn}><img src={loginButton} width="150"/></button>
+              </div>
+          </aside>
+      </div>
+    );
 }
+
 
 export default Login;

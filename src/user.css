@@ -1,8 +1,4 @@
-button{
-    border-color: white;
-}
-
-.LoginButton{
+.Users{
     margin: 10px;
     padding: 40px;
     font-weight: normal;
@@ -12,10 +8,4 @@ button{
     margin-left: auto;
     margin-right: auto;
     align-items: center;
-}
-
-.custom-login-btn img {
-    align-items: center;
-    align-content: center;
-    text-align: center;
 }
