@@ -26,7 +26,7 @@ function App () {
         <Login />
         <Routes>
           {/* <Route path="/mypage" render={() => (modal = 1 ? <Mypage /> : <Login />)}/> */}
-          <Route path="/portforlio" element={<Portfolio />} />
+          <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/rebalancing" element={<Rebalancing />} />
           <Route path="/mybudget" element={<Mybudget />} />
           <Route path="/mypage" element={<Mypage />} />

@@ -1,0 +1,24 @@
+
+.Portfolio {
+    display: block;
+    text-align: center; 
+    margin: 50px;
+    padding-top: 50px; 
+
+}
+
+
+.inputBox{
+    display: block;
+    text-align: center; 
+    margin: 50px;
+}
+
+input{
+    margin: 100px;
+}
+
+button{
+    display: inline-block;
+    text-align: right; 
+}

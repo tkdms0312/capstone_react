@@ -31,12 +31,12 @@ function Login() {
   }
 
     return (
-      <div class="Login">
+      <div className="Login">
           <aside> {/*오른쪽에 로그인버튼 부분 */}
               <div className="LoginButton" >
                   {/* <a href="http://13.125.140.171/login/kakao" id="custom-login-btn" onClick={signIn}><img src={loginButton} width="150"/></a> */}
                   {/* <button id="custom-login-btn" onClick={signIn}><img src={loginButton} width="150"/></button> */}
-                  {modal == "1" ?  <button class="ui purple basic button" >{nickName} 님 안녕하세요</button> : <button id="custom-login-btn" onClick={signIn}><img src={loginButton} width="150"/></button>}
+                  {modal == "1" ?  <button className="ui purple basic button" >{nickName} 님 안녕하세요</button> : <button id="custom-login-btn" onClick={signIn}><img src={loginButton} width="150"/></button>}
               </div>
           </aside>
       </div>

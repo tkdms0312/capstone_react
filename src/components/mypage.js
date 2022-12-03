@@ -1,6 +1,6 @@
 import React, { Route, useState, useEffect,Component } from 'react';
 import axios from 'axios'
-import { Navigate, useNavigate, redirect } from 'react-router-dom';
+import { Navigate, useNavigate, redirect, BrowserRouter } from 'react-router-dom';
 import Login from '../login';
 import 'semantic-ui-css/semantic.min.css'
 import { Button, Segment } from "semantic-ui-react";
@@ -13,6 +13,7 @@ function Mypage(){
       window.location.replace('http://localhost:3000/')
     }
     else {
+
 
     }
   }, []);
@@ -27,9 +28,12 @@ function Mypage(){
     //             </div>
     //         </aside>
     //     </div>
+    
     <div>
+      <h3>담은 주식이 없습니다.</h3>
 
     </div>
+  
     );
 }
 

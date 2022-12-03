@@ -10,11 +10,6 @@
     align-items: center;
 } */
 
-.logedin {
-    display: inline-block;
-    text-align: right; 
-    margin: 100px;
-    padding-top: 100px; 
-    padding-left: 50px;
-
+h3 {
+    text-align: center;
 }
