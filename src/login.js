@@ -2,8 +2,12 @@ import React, { Route, useState, useEffect,Component } from 'react';
 import './login.css';
 import loginButton from './img/kakao_login.png'
 import axios from 'axios'
-import { Navigate, useNavigate, redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // import { Cookies, Cookies } from "react-cookie"
+import Portfolio from './components/portfolio';
+import Mypage from './components/mypage';
+import Mybudget from './components/mybudget';
+import Rebalancing from './components/rebalancing';
 
 
 function Login() {
@@ -39,6 +43,12 @@ function Login() {
                   {modal == "1" ?  <button className="ui purple basic button" >{nickName} 님 안녕하세요</button> : <button id="custom-login-btn" onClick={signIn}><img src={loginButton} width="150"/></button>}
               </div>
           </aside>
+          
+      {/* <Portfolio data={nickName} /> */}
+      {/* <Mypage data={nickName} />
+      <Mybudget data={nickName} />
+      <Rebalancing data={nickName} /> */}
+
       </div>
     );
 }

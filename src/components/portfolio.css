@@ -22,3 +22,8 @@ button{
     display: inline-block;
     text-align: right; 
 }
+
+.ui.celled_table{
+    text-align: center;
+    width: 80px;
+}

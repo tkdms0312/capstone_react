@@ -11,6 +11,8 @@ import Main from './components/main';
 import Login from './login';
 import loginHandle from './loginHandle';
 import { redirect } from 'react-router-dom';
+import Trade from './components/trade';
+
 // 각 페이지 구성요소를 따로 만듬
 
 const modal = Mypage.modal
@@ -30,6 +32,7 @@ function App () {
           <Route path="/rebalancing" element={<Rebalancing />} />
           <Route path="/mybudget" element={<Mybudget />} />
           <Route path="/mypage" element={<Mypage />} />
+          <Route path="/portfolio/trade" element={<Trade />}/>
         </Routes>
       {/* </loginHandle.Provider> */}
       </BrowserRouter>
