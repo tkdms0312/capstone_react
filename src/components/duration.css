@@ -1,0 +1,23 @@
+.Time {
+    display: block;
+    text-align: center; 
+    margin: 10px;
+    padding-top: 30px; 
+
+}
+
+.duration {
+    display: inline-block;
+    text-align: center; 
+    margin: 40px;
+    padding-right: 10px;
+
+}
+
+.date {
+    display: inline-block;
+    text-align: center; 
+    margin: 20px;
+    padding-left: 10px;
+
+}
