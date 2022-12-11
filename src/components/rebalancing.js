@@ -19,7 +19,8 @@ function Portfolio(){ //주식 입력하면 비율 계산해서 추천해주는�
     const [modal,setModal] = useState();
     let stocks = [...stockTit];
     const [resData, setResdata] = useState([]);
-    const [resNumList, resNumfunc] = useState(0);
+    const [resNumList, resNumfunc] = useState([]);
+    const [buttName,setButton] = useState('구매');
 
     function addStock(){ //입력한 주식 리스트들
         stocks.push(stockID);
@@ -62,7 +63,8 @@ function Portfolio(){ //주식 입력하면 비율 계산해서 추천해주는�
                 stockId: res.data.orderList[index].stockId,
                 rate: res.data.orderList[index].rate,
                 quantity: res.data.orderList[index].quantity,
-                price: res.data.orderList[index].price
+                price: res.data.orderList[index].price,
+                order: false
             })))
             console.log(resData);
             setModal(1);
@@ -73,6 +75,8 @@ function Portfolio(){ //주식 입력하면 비율 계산해서 추천해주는�
     
       function trade(id,qua){ //결과 안나와도 걍 구매되었습니다 띄우기
         setLoading(false);
+        setButton('구매완료');
+
         console.log(id);
         console.log(qua);
 
@@ -83,8 +87,14 @@ function Portfolio(){ //주식 입력하면 비율 계산해서 추천해주는�
                 }
             }).then((response) =>{
                 console.log(response);
+                const result = resData.map((stc=>{
+                    return stc.stockId === id ? {...stc, order: !stc.order} : stc
+                }))
+                setResdata(result)
                 
             })
+
+            
       }
         
     return(
@@ -93,9 +103,9 @@ function Portfolio(){ //주식 입력하면 비율 계산해서 추천해주는�
             <div className="loading">
             {loading ?  
             <div class="ui active dimmer" >
-              <div class="ui active inverted dimmer">
+              {/* <div class="ui active inverted dimmer"> */}
               <div class="ui text loader">계산중</div></div>
-            </div>
+            // </div>
             : null}
                 {modal == "1" ?  
                 <div className="result">
@@ -105,20 +115,21 @@ function Portfolio(){ //주식 입력하면 비율 계산해서 추천해주는�
                     <th>비율</th>
                     <th>수량</th>
                     <th>가격 (KRW)</th>
+                    <th>옵션</th>
                 </tr></thead>
                 <tbody>
-                    {resData.map((stc,i) => 
-                    {   
-                        return(
-                        <tr>
-                            <td onClick={() => { stocknumFunc(i); } } key={i}>{stc.stockId}</td>
+                    {resData.map((stc,idx) =>
+                        {return(
+                            <tr>
+                            <td key={idx}>{stc.stockId}</td>
                             <td>{stc.rate}</td>
                             <td>{stc.quantity}</td>
                             <td>{stc.price} ₩</td>
-                            <td><button class="ui inverted violet button" onClick={() => { trade(stc.stockId, stc.quantity) }}>구매</button></td>
-                        </tr>
+                            <td><button class="ui inverted violet button" onClick={() => { trade(stc.stockId, stc.quantity) }}> {stc.order ? '구매완료' : '구매'} </button></td>
+                            </tr>
                         );
-                    })}
+                        }
+                    )}
                 </tbody>
                 </table>
                 </div>
