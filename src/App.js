@@ -15,7 +15,7 @@ import Trade from './components/trade';
 
 // 각 페이지 구성요소를 따로 만듬
 
-const modal = Mypage.modal
+const modal = Login.modal;
 
 function App () {
 
@@ -25,7 +25,7 @@ function App () {
         <Navigation /> {/* 네비게이션 페이지는 따로 만들어서 한줄로 넣고 */}
         {/* <Main /> */}
         
-        <Login />
+        <Login Login={1}/>
         <Routes>
           {/* <Route path="/mypage" render={() => (modal = 1 ? <Mypage /> : <Login />)}/> */}
           <Route path="/portfolio" element={<Portfolio />} />

@@ -9,7 +9,7 @@ import Trade from './trade';
 
 
 
-function Portfolio(){ //주식 입력하면 비율 계산해서 추천해주는거
+function Rebalancing(){ //주식 입력하면 비율 계산해서 추천해주는거
     const [loading, setLoading] = useState();
     const [stockID,setID] = useState("");
     const [cost,setCost] = useState();
@@ -128,7 +128,7 @@ function Portfolio(){ //주식 입력하면 비율 계산해서 추천해주는�
                 </tbody>
                 </table>
                 </div>
-                : <><div className="inputBox" padding="10px">
+                : <><div className="inputBox">
                     <div className="price">
                         <div className="ui action input">
                             <input type="text" placeholder="값 입력" name='price'
@@ -168,4 +168,4 @@ function Portfolio(){ //주식 입력하면 비율 계산해서 추천해주는�
     );
 }
 
-export default Portfolio;
+export default Rebalancing;

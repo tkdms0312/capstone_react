@@ -7,6 +7,10 @@
 
 }
 
+h2{
+    margin-left: 60px;
+}
+
 
 .inputBox{
     display: block;
@@ -45,25 +49,26 @@
     text-align: center; 
 }
 
-input{
-    margin: 100px;
-    padding: 50px;
+.inputBox{
+    margin: 30px;
+    padding: 10px;
+    margin-left: 200px;
 }
 
 .result{
     display: block;
     text-align: center;
-    margin-left: 90px;
+    margin-left: 200px;
     width: 80%;
     padding-bottom: 30px;
+    padding-left: 50px;
     margin-top: -5px;
 }
 
 .setting{
-    display: block;
+    display: inline-block;
     text-align: center;
-    margin-left: 80px;
-    padding: 10px;
+    margin-left: 40px;
     width: 70%;
     padding-bottom: 20px;
 }

@@ -5,6 +5,7 @@ import 'semantic-ui-css/semantic.min.css'
 import { useNavigate } from "react-router-dom"
 import Modal from 'react-modal'
 import Login from '../login';
+import { render } from '@testing-library/react';
 
 function Duration() {
   const [date,setDate] = useState("");
@@ -40,8 +41,19 @@ function Duration() {
     axios
       .post("http://13.125.140.171/rebalancing/date", requestbody)
       .then((res) => {
-        console.log(res); //리밸런싱 예정 날짜
-        
+        console.log(res.data); //리밸런싱 예정 날짜
+        render(
+          <div class="ui floating message">
+            <div class="header">
+              다음 리밸런싱 진행 날짜는
+            </div>
+            <p></p>
+            <p>
+              <h5>{res.data} 입니다</h5>
+            </p>
+          </div>
+
+        )
     });
   };
 
@@ -66,12 +78,9 @@ function Duration() {
             <div class="ui action input">
               <input type="text" placeholder="yyyy-MM-dd" name='date'
               onChange={dateHandler} value={date}></input><button class="ui inverted orange button" 
-              onClick={submitHandler}>입력</button>
+              onClick={submitHandler} disabled={date.length !== 0 ? false : true}>입력</button>
             </div>
         </div>
-        
-        
-      
       </div>
     );
   }

@@ -32,3 +32,76 @@
     align-items: center;
     background-color: rgb(178, 178, 178);
 }
+
+.Portfolio {
+    display: block;
+    text-align: center; 
+    margin: 20px;
+    padding-top: 30px; 
+
+}
+
+
+.inputBox{
+    display: block;
+    text-align: center; 
+    margin: 10px;
+    padding-bottom: 10px;
+}
+
+.price{
+    display: inline-block;
+    padding-right: 20px;
+    margin-left: -150px;
+}
+.id{
+    display: inline-block;
+    padding-left: 20px;
+}
+
+.loading{
+    display: block;
+    text-align: center; 
+    margin: 50px;
+    width: 80%;
+}
+
+.ui.input_dimmer{
+    display: block;
+    text-align: center; 
+    margin: 50px;
+    width: 80%;
+}
+
+input{
+    margin: 100px;
+    padding: 50px;
+}
+
+.budgetList{
+    display: block;
+    text-align: center;
+    margin-left: 90px;
+    width: 60%;
+    padding-bottom: 30px;
+    margin-top: -5px;
+}
+
+.setting{
+    display: block;
+    text-align: center;
+    margin-left: 80px;
+    padding: 10px;
+    width: 70%;
+    padding-bottom: 20px;
+}
+
+button{
+    display: inline-block;
+    text-align: right; 
+}
+
+.ui.celled_table{
+    text-align: center;
+    width: 80px;
+}

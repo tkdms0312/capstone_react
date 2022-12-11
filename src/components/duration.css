@@ -6,6 +6,10 @@
 
 }
 
+.ui.dropdown{
+    margin-left: 60px;
+}
+
 .duration {
     display: inline-block;
     text-align: center; 
@@ -14,10 +18,24 @@
 
 }
 
+
 .date {
     display: inline-block;
     text-align: center; 
     margin: 20px;
     padding-left: 10px;
+
+}
+
+.ui.action input{
+    margin-left: 50px;
+}
+
+.ui.message{
+    display: inline-block;
+    text-align: center;
+    margin-left: 250px;
+    width: 50%;
+    height: 80px;
 
 }
