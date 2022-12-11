@@ -10,7 +10,6 @@ import Trade from './trade';
 
 
 function Portfolio(){ //주식 입력하면 비율 계산해서 추천해주는거
-    const nav = useNavigate();
     const [loading, setLoading] = useState();
     const [stockID,setID] = useState("");
     const [cost,setCost] = useState();
@@ -19,8 +18,6 @@ function Portfolio(){ //주식 입력하면 비율 계산해서 추천해주는�
     const [modal,setModal] = useState();
     let stocks = [...stockTit];
     const [resData, setResdata] = useState([]);
-    const [resNumList, resNumfunc] = useState([]);
-    const [buttName,setButton] = useState('구매');
 
     function addStock(){ //입력한 주식 리스트들
         stocks.push(stockID);
@@ -73,9 +70,8 @@ function Portfolio(){ //주식 입력하면 비율 계산해서 추천해주는�
         });
       };
     
-      function trade(id,qua){ //결과 안나와도 걍 구매되었습니다 띄우기
+      function trade(id,qua){ //구매 누르면 구매 완료
         setLoading(false);
-        setButton('구매완료');
 
         console.log(id);
         console.log(qua);
@@ -98,14 +94,13 @@ function Portfolio(){ //주식 입력하면 비율 계산해서 추천해주는�
       }
         
     return(
-        <div className="Portfolio">
+        <div className="Rebalancing">
             <h2>주식 가격 및 비율</h2>
             <div className="loading">
             {loading ?  
-            <div class="ui active dimmer" >
-              {/* <div class="ui active inverted dimmer"> */}
+            // <div class="ui segment" >
+              <div class="ui active inverted dimmer">
               <div class="ui text loader">계산중</div></div>
-            // </div>
             : null}
                 {modal == "1" ?  
                 <div className="result">
@@ -137,13 +132,15 @@ function Portfolio(){ //주식 입력하면 비율 계산해서 추천해주는�
                     <div className="price">
                         <div className="ui action input">
                             <input type="text" placeholder="값 입력" name='price'
-                                onChange={costHandler} value={cost}></input><button className="ui button" type='submit'>입력</button>
+                                onChange={costHandler} value={cost}></input><button className="ui button"
+                                disabled={cost !== null ? false : true}>입력</button>
                         </div>
                     </div>
                     <div className="id">
                         <div className="ui action input">
                             <input type="text" placeholder="종목 코드 입력" name='stockId'
-                                onChange={idHandler} value={stockID}></input><button class="ui button" onClick={() => { addStock(); setID(""); } }>담기</button>
+                                onChange={idHandler} value={stockID}></input><button class="ui button" onClick={() => { addStock(); setID(""); }}
+                                disabled={stockID.length !== 0 ? false : true}>담기</button>
                         </div>
                     </div>
                     </div>

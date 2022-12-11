@@ -14,7 +14,7 @@ function Navigation() {
         <header>
             <nav>
                 <div className="logo">
-                    <a href="/"><img src={mainLogo} width="80" height="80"/></a>
+                    <a href="mainpage"><img src={mainLogo} width="80" height="80"/></a>
                 </div>
                 <div className="menu">
                     <ul>

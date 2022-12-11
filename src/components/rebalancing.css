@@ -1,5 +1,5 @@
 
-.Portfolio {
+.Rebalancing {
     display: block;
     text-align: center; 
     margin: 20px;
@@ -36,7 +36,13 @@
     display: block;
     text-align: center; 
     margin: 50px;
-    width: 80%;
+    width: 50%;
+    height: 100%;
+    color: azure;
+}
+.ui.text_loader{
+    display: block;
+    text-align: center; 
 }
 
 input{
