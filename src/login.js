@@ -23,31 +23,46 @@ function Login() {
       // withCredentials: true
     }).then(function (response) {
       console.log(JSON.stringify(response, null, 2));
-      nav("mypage")
+      nav("mybudget")
       const user = JSON.stringify(response.data.nickName)
       setParam(response.data.nickName)
       setModal('1')
       localStorage.setItem("nickName", response.data.nickName)
     });
 
-    
   
+  }
+
+  const kakaoSign = async () =>{
+    axios.get("http://13.125.140.171/login/kakao", {
+    }).then(function (response) {
+      console.log(response);
+      console.log(JSON.stringify(response, null, 2));
+      if(response=="existMember"){
+        setModal('1')
+      }
+      //nav("mybudget")
+      // const user = JSON.stringify(response.data.nickName)
+      // setParam(response.data.nickName)
+      // setModal('1')
+      // localStorage.setItem("nickName", response.data.nickName)
+    });
   }
 
     return (
       <div className="Login">
           <aside> {/*오른쪽에 로그인버튼 부분 */}
               <div className="LoginButton" >
-                  {/* <a href="http://13.125.140.171/login/kakao" id="custom-login-btn" onClick={signIn}><img src={loginButton} width="150"/></a> */}
                   {/* <button id="custom-login-btn" onClick={signIn}><img src={loginButton} width="150"/></button> */}
-                  {modal == "1" ?  <button className="ui purple basic button" >{nickName} 님 안녕하세요</button> : <button id="custom-login-btn" onClick={signIn}><img src={loginButton} width="150"/></button>}
+                  {modal == "1" ?  <button className="ui purple basic button" >{nickName} 님 안녕하세요</button> 
+                  : 
+                  // <button className="custom" onClick={signIn}><img src={loginButton} width="150"/></button>
+                  <button class="ui yellow button" onClick={signIn}>로그인하기</button>}
+                  {/* {modal == "1" ?  <button className="ui purple basic button" >{nickName} 님 안녕하세요</button> 
+                  : <button id="custom-login-btn" onClick={kakaoSign}><img src={loginButton} width="150"/></button>} */}
+                  {/* <button className="ui purple basic button" >testUser 님 안녕하세요</button> */}
               </div>
           </aside>
-          
-      {/* <Portfolio data={nickName} /> */}
-      {/* <Mypage data={nickName} />
-      <Mybudget data={nickName} />
-      <Rebalancing data={nickName} /> */}
 
       </div>
     );

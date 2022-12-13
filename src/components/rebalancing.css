@@ -39,9 +39,10 @@ h2{
 .ui.input_dimmer{
     display: block;
     text-align: center; 
-    margin: 50px;
-    width: 50%;
-    height: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
     color: azure;
 }
 .ui.text_loader{
@@ -58,7 +59,7 @@ h2{
 .result{
     display: block;
     text-align: center;
-    margin-left: 200px;
+    margin-left: 100px;
     width: 80%;
     padding-bottom: 30px;
     padding-left: 50px;

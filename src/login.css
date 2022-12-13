@@ -13,9 +13,16 @@ button{
     margin-right: auto;
     align-items: center;
 }
-
-.custom-login-btn img {
+/* 
+.custom img {
     align-items: center;
     align-content: center;
     text-align: center;
+} */
+
+.custom{
+    display: inline-block;
+    margin-left: -15px;
+    text-align: center;
+    margin-right: 20px;
 }

@@ -10,6 +10,18 @@
     align-items: center;
 } */
 
-h3 {
-    text-align: center;
+.mypage{
+    display: inline-block;
+    text-align: center; 
+    margin: 70px;
+    padding-left: 10px;
+    margin-left: 200px;
 }
+
+.ui.message{
+    display: inline-block;
+    text-align: center;
+    width: 200px;
+    height: 70px;
+}
+

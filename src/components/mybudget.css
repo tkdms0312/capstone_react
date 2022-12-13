@@ -81,10 +81,10 @@ input{
 .budgetList{
     display: block;
     text-align: center;
-    margin-left: 90px;
+    margin-left: 190px;
     width: 60%;
     padding-bottom: 30px;
-    margin-top: -5px;
+    margin-top: 20px;
 }
 
 .setting{

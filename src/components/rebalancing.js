@@ -6,6 +6,9 @@ import { useNavigate } from "react-router-dom"
 import Modal from 'react-modal'
 import Login from '../login';
 import Trade from './trade';
+import * as XLSX from 'xlsx';
+import excelFile from '../stockList.xlsx'//get file location url from react src folder
+
 
 
 
@@ -18,6 +21,10 @@ function Rebalancing(){ //주식 입력하면 비율 계산해서 추천해주�
     const [modal,setModal] = useState();
     let stocks = [...stockTit];
     const [resData, setResdata] = useState([]);
+
+    const [matchId, setMatch] = useState("");
+    const [nameTit, nameTitFunc] = useState([]);
+    let names = [...nameTit];
 
     function addStock(){ //입력한 주식 리스트들
         stocks.push(stockID);
@@ -69,6 +76,43 @@ function Rebalancing(){ //주식 입력하면 비율 계산해서 추천해주�
             
         });
       };
+
+      function match(id,idx){
+            // get file from the imported url
+        var request = new XMLHttpRequest();
+        request.open('GET', excelFile, true);
+        request.responseType = "arraybuffer";
+        request.onload = function() {
+            /* convert data to binary string */
+            var data = new Uint8Array(request.response);
+            var arr = new Array();
+            for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+            data = arr.join("");
+            var funcid = id;
+
+            //using xlsx library convert file to json
+            const workbook = XLSX.read(data, { type: "binary" })
+            const sheetName = workbook.SheetNames[0]
+            const worksheet = workbook.Sheets[sheetName]
+            const json = XLSX.utils.sheet_to_json(worksheet)
+            const col = XLSX.utils.sheet_to_json(worksheet,{range: "A2:B943", header: ["stockId","name"]})
+            //console.log(json)
+            
+            for(var i=0; i != 942; ++i){
+                if(funcid === col[i].stockId){
+                    names.push(col[i].name);
+                    nameTitFunc(names);
+                    break;
+                }
+                else continue;
+            }
+        };
+        
+        request.send();
+
+
+        return(names[idx]);
+      }
     
       function trade(id,qua){ //구매 누르면 구매 완료
         setLoading(false);
@@ -107,6 +151,7 @@ function Rebalancing(){ //주식 입력하면 비율 계산해서 추천해주�
                 <table class="ui celled table" textalign="center">
                 <thead><tr>
                     <th>주식 id</th>
+                    <th>주식명</th>
                     <th>비율</th>
                     <th>수량</th>
                     <th>가격 (KRW)</th>
@@ -117,10 +162,12 @@ function Rebalancing(){ //주식 입력하면 비율 계산해서 추천해주�
                         {return(
                             <tr>
                             <td key={idx}>{stc.stockId}</td>
+                            <td>{match(stc.stockId,idx)}</td>
                             <td>{stc.rate}</td>
                             <td>{stc.quantity}</td>
                             <td>{stc.price} ₩</td>
-                            <td><button class="ui inverted violet button" onClick={() => { trade(stc.stockId, stc.quantity) }}> {stc.order ? '구매완료' : '구매'} </button></td>
+                            <td><button class="ui inverted violet button" onClick={() => { trade(stc.stockId, stc.quantity) }}> 
+                            {stc.order ? '구매완료' : '구매'} </button></td>
                             </tr>
                         );
                         }
