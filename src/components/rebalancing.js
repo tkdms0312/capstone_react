@@ -106,6 +106,8 @@ function Rebalancing(){ //주식 입력하면 비율 계산해서 추천해주�
                 }
                 else continue;
             }
+
+            console.log(names);
         };
         
         request.send();

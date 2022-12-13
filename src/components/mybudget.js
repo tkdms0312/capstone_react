@@ -14,6 +14,7 @@ function Mybudget(){ //보유한 주식 보여주는
     const nav = useNavigate();
     const [nameTit, nameTitFunc] = useState([]);
     let names = [...nameTit];
+    const [num,setNum] = useState();
 
     
     useEffect(()=>{
@@ -29,16 +30,15 @@ function Mybudget(){ //보유한 주식 보여주는
             })
 
     }, []);
+
     
     
         function trade(name){ //판매 누르면 판매 완료
+            setNum(num);
             const result = stcList.map((stc=>{
                 return stc.name === name ? {...stc, order: !stc.order} : stc
             }))
             setStcList(result)
-            return(
-                <Modal /> //수량 입력 모달
-            );
         }
 
     //     function match(id,idx){
@@ -98,9 +98,12 @@ function Mybudget(){ //보유한 주식 보여주는
                             <td key={idx}>{stc.name}</td>
                             <td>{stc.quantity}</td>
                             <td>{stc.rate} %</td>
-                            <td><button class="ui inverted violet button" 
+                            <td>
+                            <div class="ui action input">
+                                <input type="text" placeholder="판매수량 입력" name='date'
+                            value={num}></input><button class="ui inverted violet button" 
                             onClick={() => { trade(stc.name) }}
-                            > {stc.order ? '판매완료' : '판매'} </button></td>
+                            > {stc.order ? '판매완료' : '판매'} </button></div></td>
                             </tr>
                         );
                         }

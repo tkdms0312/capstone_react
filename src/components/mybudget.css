@@ -103,5 +103,9 @@ button{
 
 .ui.celled_table{
     text-align: center;
-    width: 80px;
+    width: 100px;
+}
+
+.ui.action input{
+    width: 90px;
 }
